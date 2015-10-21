@@ -1,4 +1,4 @@
-function [ D ] = Floyd-Warshall(G)
+function [ D ] = Floyd(G)
 % This is the Floyd Warshall algorithm from page 765 of CLRS.
 %   It uses dynamic programming to build all pairs shortest paths
 %   in O(n^3) time, with O(n^2).

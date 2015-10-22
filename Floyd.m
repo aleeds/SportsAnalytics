@@ -4,15 +4,16 @@ function [ D ] = Floyd(G)
 %   in O(n^3) time, with O(n^2).
 
   [n,~] = size(G);
-  D = G;
-  for k = (1:n)
+  D = zeros(n,n,n);
+  D(1,:,:) = G;
+  for k = (2:n)
     for i = (1:n)
        for j = (1:n)
-          D(i,j) = min(D(i,j),D(i,k) + D(k,j));
+          D(k,i,j) = min(D(k - 1,i,j),D(k - 1,i,k) + D(k - 1,k,j));
        end
     end
   end
-  
+  D = D(n,:,:);
 
 end
 

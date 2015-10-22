@@ -5,15 +5,17 @@ function [ D ] = Floyd(G)
 
   [n,~] = size(G);
   D = zeros(n,n,n);
-  D(1,:,:) = G;
+  D(:,:,1) = G;
   for k = (2:n)
     for i = (1:n)
        for j = (1:n)
-          D(k,i,j) = min(D(k - 1,i,j),D(k - 1,i,k) + D(k - 1,k,j));
+          D(i,j,k) = min(D(i,j,k - 1),D(i,k, k - 1) + D(k,j,k - 1));
        end
     end
   end
-  D = D(n,:,:);
-
+  t = D;
+  D = zeros(n,n);
+  D = t(:,:,k);
+  
 end
 
